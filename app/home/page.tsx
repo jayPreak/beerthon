@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Beer, Trophy, Users, Calendar, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
 
 const Home: NextPage = () => {
@@ -19,28 +20,7 @@ const Home: NextPage = () => {
     const textScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
     return (
-        <div ref={containerRef} className="relative min-h-[300vh] bg-black text-white selection:bg-yellow-500/30 font-sans overflow-x-hidden">
-            {/* Animated Neon Background */}
-            <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-                <motion.div
-                    style={{ y: backgroundY }}
-                    className="absolute inset-0 opacity-20"
-                >
-                    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow-500 rounded-full blur-[120px] animate-pulse" />
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-yellow-600 rounded-full blur-[120px] animate-pulse delay-700" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-yellow-900/20 rounded-full blur-[150px]" />
-                </motion.div>
-
-                {/* Neon Grid Layer */}
-                <div
-                    className="absolute inset-0 z-0 opacity-[0.05]"
-                    style={{
-                        backgroundImage: `linear-gradient(to right, #eab308 1px, transparent 1px), linear-gradient(to bottom, #eab308 1px, transparent 1px)`,
-                        backgroundSize: '40px 40px'
-                    }}
-                />
-            </div>
-
+        <div ref={containerRef} className="relative min-h-[300vh] overflow-x-hidden">
             {/* Hero Section */}
             <section className="relative h-screen flex flex-col items-center justify-center p-6 text-center z-10">
                 <motion.div
@@ -64,12 +44,14 @@ const Home: NextPage = () => {
                         BEER<span className="text-yellow-400">THON</span>
                     </motion.h1>
                     <p className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 font-light">
-                        42 beers in a row. Competitive. Drinking.
+                        No running. Only Drinking.
                     </p>
                     <div className="flex gap-4 justify-center">
-                        <Button size="lg" className="bg-yellow-600 hover:bg-yellow-600 text-white font-bold h-12 px-8 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.5)]">
-                            REGISTER NOW
-                        </Button>
+                        <Link href="/play">
+                            <Button size="lg" className="bg-yellow-600 hover:bg-yellow-600 text-white font-bold h-12 px-8 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.5)]">
+                                PLAY
+                            </Button>
+                        </Link>
                         <Button variant="outline" size="lg" className="border-yellow-500 text-yellow-600 hover:bg-yellow-500/10 h-12 px-8 rounded-full">
                             LEADERBOARDS
                         </Button>
